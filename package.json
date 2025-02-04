@@ -4,7 +4,7 @@
     "description": "",
     "type": "module",
     "scripts": {
-        "zap": "export $(cat .env | grep -m 1 DATABASE_URL | xargs) && npx zapatos",
+        "zap": "export $(cat .env | grep -m 1 DATABASE_URL | xargs) && npx zapatos && cp src/zapatos/schema.d.ts src/backend/zapatos.d.ts && cp src/zapatos/schema.d.ts src/common/zapatos.d.ts && cp src/zapatos/schema.d.ts src/frontend/zapatos.d.ts",
         "build:frontend": "vite build src/frontend",
         "build:backend": "tsc --build ./src/backend/tsconfig.json",
         "build": "npm run build:frontend && npm run build:backend",
@@ -16,6 +16,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
         "@types/lodash": "^4.17.15",
         "@types/node": "^22.13.1",
@@ -32,11 +33,13 @@
         "zapatos": "^6.4.4"
     },
     "dependencies": {
+        "@emotion/styled": "^11.14.0",
         "@mui/material": "^6.4.2",
         "@reduxjs/toolkit": "^2.5.1",
         "@trpc/client": "^10.45.2",
         "@trpc/server": "^10.45.2",
         "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
         "lodash": "^4.17.21",

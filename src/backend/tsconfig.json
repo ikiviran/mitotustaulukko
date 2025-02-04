@@ -20,10 +20,7 @@
     "references": [
         {
             "path": "../common"
-        },
-        {
-            "path": "../zapatos"
-        },
+        }
     ],
     "exclude": [
         "node_modules",

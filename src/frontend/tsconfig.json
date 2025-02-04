@@ -26,9 +26,6 @@
         },
         {
             "path": "../backend"
-        },
-        {
-            "path": "../zapatos"
         }
     ],
     "exclude": [

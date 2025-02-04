@@ -1,5 +1,5 @@
 import pg from "pg";
-
+import * as zap from "zapatos/db";
 import { env } from "./env.js";
 
 let pool: pg.Pool | undefined;
@@ -18,4 +18,16 @@ export function getPool(): pg.Pool {
         console.error("Pg pool error", error);
     });
     return pool;
+}
+
+export type TxnClient = zap.TxnClient<zap.IsolationSatisfying<zap.IsolationLevel.ReadCommitted>>;
+
+export function withTransaction<T>(
+    fn: (txn: TxnClient) => Promise<T>,
+    txn?: TxnClient
+): Promise<T> {
+    if (txn) {
+        return fn(txn);
+    }
+    return zap.transaction(getPool(), zap.IsolationLevel.ReadCommitted, fn);
 }

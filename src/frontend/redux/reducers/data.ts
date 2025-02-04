@@ -22,6 +22,11 @@ export const dataSlice = createSlice({
                 }
             }
         },
+        deleteDgs(state, action: PayloadAction<{ ids: string[] }>) {
+            for (const id of action.payload.ids) {
+                delete state.dg[id];
+            }
+        },
     },
 });
 

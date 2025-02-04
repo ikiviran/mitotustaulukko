@@ -6,18 +6,18 @@ Example project using:
 - nodejs
 - react
 - vite
-- zapatos (db schema --> typescript types)
+- zapatos (db schema --> typescript types + crud helpers)
 - dbmate (db migrations)
 
 
 ## First time setup
 
-#### Start postgres docker image:
+Start postgres docker image:
 ```
 docker compose -f docker-compose.yml up --remove-orphans
 ```
 
-#### Initialize 'mitotustaulukko' db:
+Initialize 'mitotustaulukko' db:
 ```bash
 psql -U postgres -d postgres -h localhost -p 5432
 # password is in the docker-compose.yml

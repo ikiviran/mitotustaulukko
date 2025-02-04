@@ -4,6 +4,7 @@ import _ from "lodash";
 import zap from "zapatos/db";
 import { getPool } from "../../db.js";
 import { publicProc, createTrpcRouter } from "./trpc.js";
+import { createDg, updateDg, deleteDg } from "../../services/index.js";
 
 export const displayGroupRouter = createTrpcRouter({
     getAll: publicProc //
@@ -20,28 +21,42 @@ export const displayGroupRouter = createTrpcRouter({
     create: publicProc //
         .input(
             yup.object({
-                id: yup.string().max(128).required(),
-                name: yup.string().max(128).required(),
+                id: yup.string().min(1).max(128).required(),
+                name: yup.string().min(1).max(128).required(),
                 level: yup.number().required(),
-                parent_id: yup.string().max(128).optional(),
+                parent_id: yup
+                    .string()
+                    .max(128)
+                    .nullable()
+                    .transform((val) => (val === "" ? null : val))
+                    .optional(),
             })
         )
         .mutation(async ({ input }) => {
-            return zap.insert("display_group", input).run(getPool());
+            return await createDg(input, { audit: true });
         }),
 
     update: publicProc //
         .input(
             yup.object({
-                id: yup.string().max(128).required(),
-                name: yup.string().max(128).required(),
-                level: yup.number().required(),
-                parent_id: yup.string().max(128).nullable().optional(),
+                id: yup.string().min(1).max(128).optional(),
+                name: yup.string().min(1).max(128).optional(),
+                level: yup.number().optional(),
+                parent_id: yup
+                    .string()
+                    .max(128)
+                    .nullable()
+                    .transform((val) => (val === "" ? null : val))
+                    .optional(),
             })
         )
         .mutation(async ({ input }) => {
-            return zap
-                .update("display_group", _.omit(input, "id"), { id: input.id })
-                .run(getPool());
+            return await updateDg(input, { id: input.id }, { audit: true });
+        }),
+
+    delete: publicProc //
+        .input(yup.object({ id: yup.string().max(128).required() }))
+        .mutation(async ({ input }) => {
+            return await deleteDg({ id: input.id }, { audit: true });
         }),
 });
