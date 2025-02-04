@@ -1,0 +1,17 @@
+# Usage:
+# docker compose -f docker-compose.yml up --remove-orphans
+# add -d for daemon mode
+
+services:
+    postgres:
+        image: postgres:15
+        environment:
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'hys'
+        ports:
+            - '5432:5432'
+        volumes:
+            - database_data:/var/lib/postgresql/data/
+
+volumes:
+    database_data:

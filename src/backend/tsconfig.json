@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "rootDir": "./",
+        "outDir": "../../output/backend",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "composite": true,
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "incremental": true,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "references": [
+        {
+            "path": "../common"
+        },
+        {
+            "path": "../zapatos"
+        },
+    ],
+    "exclude": [
+        "node_modules",
+        "output"
+    ]
+}

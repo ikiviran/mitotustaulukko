@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "rootDir": "./",
+        "outDir": "../../output/common",
+        "target": "ES6",
+        "jsx": "react",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "composite": true,
+        "incremental": true,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "references": [
+        {
+            "path": "../zapatos"
+        }
+    ],
+    "exclude": [
+        "node_modules",
+        "output"
+    ]
+}

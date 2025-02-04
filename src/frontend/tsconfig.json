@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "rootDir": "./",
+        "outDir": "../../output/frontend",
+        "lib": [
+            "ES2015",
+            "DOM"
+        ],
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES6",
+        "jsx": "react",
+        "incremental": true,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "composite": true
+    },
+    "references": [
+        {
+            "path": "../common"
+        },
+        {
+            "path": "../backend"
+        },
+        {
+            "path": "../zapatos"
+        }
+    ],
+    "exclude": [
+        "node_modules",
+        "output"
+    ]
+}
