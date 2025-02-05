@@ -31,11 +31,13 @@ create database mitotustaulukko;
 \c mitotustaulukko;
 
 # run schema.sql
-\i db/schema.sql
+\i ./db/schema.sql
 
 # quit
 \q
 ```
+
+Copy .env.sample to .env and fill correct values: `cp .env.sample .env`
 
 Install packages: `npm i`
 
@@ -43,7 +45,7 @@ Build: `npm run build`
 
 ## Running locally
 
-Start dev server: `npm run dev`
+Start backend and frontend in watch mode: `npm run dev`
 
 Open browser at `http://localhost:5173/`
 

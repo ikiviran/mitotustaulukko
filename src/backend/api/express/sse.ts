@@ -3,6 +3,8 @@ import * as uuid from "uuid";
 
 import { Message } from "../../../common/types/index.js";
 
+// Testing SSE (Server-Sent Events)
+
 export const sseRouter = express.Router();
 
 let clients: { id: string; response: Response }[] = [];
