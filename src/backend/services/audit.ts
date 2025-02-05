@@ -2,6 +2,8 @@ import zap from "zapatos/db";
 import type * as schema from "zapatos/schema";
 
 import { getPool } from "../db.js";
+import { Message } from "../../common/types/index.js";
+import { publishMessage } from "./index.js";
 
 export async function addAuditRow(options: {
     action: schema.audit_action;
@@ -9,7 +11,7 @@ export async function addAuditRow(options: {
     user_id: string;
     data: zap.JSONValue;
 }) {
-    await zap
+    const auditLog = await zap
         .insert("audit", {
             action: options.action,
             table_name: options.table_name,
@@ -17,4 +19,13 @@ export async function addAuditRow(options: {
             data: zap.param(options.data, true),
         })
         .run(getPool());
+
+    // In real app we wouldn't want to publish these...
+    publishMessage<Message>("sse", {
+        type: "db-change",
+        table: "audit",
+        data: { op: "c", row: auditLog },
+    });
+
+    return auditLog;
 }

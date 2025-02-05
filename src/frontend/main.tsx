@@ -6,7 +6,7 @@ import { store } from "./redux/store.js";
 import { Application } from "./components/Application.js";
 import { Message } from "../common/types/index.js";
 import { dataActions } from "./redux/reducers/index.js";
-import { DisplayGroup } from "../common/types/db.js";
+import { AuditLog, DisplayGroup } from "../common/types/db.js";
 
 const container = document.getElementById("app") as HTMLElement;
 const root = createRoot(container);
@@ -17,6 +17,7 @@ root.render(
     </Provider>
 );
 
+// Setup SSE (server-sent events)
 const events = new EventSource("http://localhost:3000/api/sse/events");
 events.onopen = () => {
     console.log("sse connection opened");
@@ -38,6 +39,11 @@ events.onmessage = (event) => {
             } else if (message.data.op === "d") {
                 const ids = message.data.ids as number[];
                 store.dispatch(dataActions.deleteDgs({ ids }));
+            }
+        } else if (message.table === "audit") {
+            if (message.data.op === "c") {
+                const auditLog = message.data.row as unknown as AuditLog;
+                store.dispatch(dataActions.addAuditLog({ auditLog }));
             }
         } else {
             console.error("unknown table", message);

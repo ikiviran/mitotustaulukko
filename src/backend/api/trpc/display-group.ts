@@ -35,6 +35,7 @@ export const displayGroupRouter = createTrpcRouter({
         .input(
             yup.object({
                 id: yup.number().required(),
+                version: yup.number().required(),
                 code: yup.string().min(1).max(128).required(),
                 name: yup.string().min(1).max(128).optional(),
                 level: yup.number().optional(),
@@ -42,9 +43,10 @@ export const displayGroupRouter = createTrpcRouter({
             })
         )
         .mutation(async ({ input }) => {
+            console.log("update", input);
             return await updateDg(
-                _.omit(input, "id"),
-                { id: input.id },
+                _.omit(input, "id", "version"),
+                { id: input.id, version: input.version },
                 { audit: true, publish: true }
             );
         }),

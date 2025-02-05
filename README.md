@@ -6,8 +6,10 @@ Example project using:
 - nodejs
 - react
 - vite
+- trpc (typesafe api endpoints)
 - zapatos (db schema --> typescript types + crud helpers)
 - dbmate (db migrations)
+- also, testing server-sent events (SSE) for real-time server --> client messages
 
 
 ## First time setup
