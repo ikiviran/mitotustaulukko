@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { DisplayGroup } from "../../../common/types/db.js";
 
 export interface TableState {
-    dg: { [key: string]: DisplayGroup };
+    dg: { [id: number]: DisplayGroup };
 }
 
 const initialState: TableState = {
@@ -22,7 +22,7 @@ export const dataSlice = createSlice({
                 }
             }
         },
-        deleteDgs(state, action: PayloadAction<{ ids: string[] }>) {
+        deleteDgs(state, action: PayloadAction<{ ids: number[] }>) {
             for (const id of action.payload.ids) {
                 delete state.dg[id];
             }

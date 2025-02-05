@@ -237,6 +237,12 @@ declare module 'zapatos/schema' {
     export type Table = 'display_group';
     export interface Selectable {
       /**
+      * **display_group.code**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      code: string;
+      /**
       * **display_group.created**
       * - `timestamptz` in database
       * - `NOT NULL`, default: `now()`
@@ -244,10 +250,10 @@ declare module 'zapatos/schema' {
       created: Date;
       /**
       * **display_group.id**
-      * - `text` in database
-      * - `NOT NULL`, no default
+      * - `int4` in database
+      * - `NOT NULL`, identity column
       */
-      id: string;
+      id: number;
       /**
       * **display_group.level**
       * - `int4` in database
@@ -268,10 +274,10 @@ declare module 'zapatos/schema' {
       name: string;
       /**
       * **display_group.parent_id**
-      * - `text` in database
+      * - `int4` in database
       * - Nullable, no default
       */
-      parent_id: string | null;
+      parent_id: number | null;
       /**
       * **display_group.version**
       * - `int4` in database
@@ -281,6 +287,12 @@ declare module 'zapatos/schema' {
     }
     export interface JSONSelectable {
       /**
+      * **display_group.code**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      code: string;
+      /**
       * **display_group.created**
       * - `timestamptz` in database
       * - `NOT NULL`, default: `now()`
@@ -288,10 +300,10 @@ declare module 'zapatos/schema' {
       created: db.TimestampTzString;
       /**
       * **display_group.id**
-      * - `text` in database
-      * - `NOT NULL`, no default
+      * - `int4` in database
+      * - `NOT NULL`, identity column
       */
-      id: string;
+      id: number;
       /**
       * **display_group.level**
       * - `int4` in database
@@ -312,10 +324,10 @@ declare module 'zapatos/schema' {
       name: string;
       /**
       * **display_group.parent_id**
-      * - `text` in database
+      * - `int4` in database
       * - Nullable, no default
       */
-      parent_id: string | null;
+      parent_id: number | null;
       /**
       * **display_group.version**
       * - `int4` in database
@@ -325,6 +337,12 @@ declare module 'zapatos/schema' {
     }
     export interface Whereable {
       /**
+      * **display_group.code**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      code?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
       * **display_group.created**
       * - `timestamptz` in database
       * - `NOT NULL`, default: `now()`
@@ -332,10 +350,10 @@ declare module 'zapatos/schema' {
       created?: (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.SQLFragment | db.ParentColumn>;
       /**
       * **display_group.id**
-      * - `text` in database
-      * - `NOT NULL`, no default
+      * - `int4` in database
+      * - `NOT NULL`, identity column
       */
-      id?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
       * **display_group.level**
       * - `int4` in database
@@ -356,10 +374,10 @@ declare module 'zapatos/schema' {
       name?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
       * **display_group.parent_id**
-      * - `text` in database
+      * - `int4` in database
       * - Nullable, no default
       */
-      parent_id?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      parent_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
       * **display_group.version**
       * - `int4` in database
@@ -369,6 +387,12 @@ declare module 'zapatos/schema' {
     }
     export interface Insertable {
       /**
+      * **display_group.code**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      code: string | db.Parameter<string> | db.SQLFragment;
+      /**
       * **display_group.created**
       * - `timestamptz` in database
       * - `NOT NULL`, default: `now()`
@@ -376,10 +400,10 @@ declare module 'zapatos/schema' {
       created?: (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.DefaultType | db.SQLFragment;
       /**
       * **display_group.id**
-      * - `text` in database
-      * - `NOT NULL`, no default
+      * - `int4` in database
+      * - `NOT NULL`, identity column
       */
-      id: string | db.Parameter<string> | db.SQLFragment;
+      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
       * **display_group.level**
       * - `int4` in database
@@ -400,10 +424,10 @@ declare module 'zapatos/schema' {
       name: string | db.Parameter<string> | db.SQLFragment;
       /**
       * **display_group.parent_id**
-      * - `text` in database
+      * - `int4` in database
       * - Nullable, no default
       */
-      parent_id?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      parent_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
       /**
       * **display_group.version**
       * - `int4` in database
@@ -413,6 +437,12 @@ declare module 'zapatos/schema' {
     }
     export interface Updatable {
       /**
+      * **display_group.code**
+      * - `text` in database
+      * - `NOT NULL`, no default
+      */
+      code?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      /**
       * **display_group.created**
       * - `timestamptz` in database
       * - `NOT NULL`, default: `now()`
@@ -420,10 +450,10 @@ declare module 'zapatos/schema' {
       created?: (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampTzString | Date) | db.Parameter<(db.TimestampTzString | Date)> | db.DefaultType | db.SQLFragment>;
       /**
       * **display_group.id**
-      * - `text` in database
-      * - `NOT NULL`, no default
+      * - `int4` in database
+      * - `NOT NULL`, identity column
       */
-      id?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
+      id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
       /**
       * **display_group.level**
       * - `int4` in database
@@ -444,10 +474,10 @@ declare module 'zapatos/schema' {
       name?: string | db.Parameter<string> | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment>;
       /**
       * **display_group.parent_id**
-      * - `text` in database
+      * - `int4` in database
       * - Nullable, no default
       */
-      parent_id?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      parent_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
       /**
       * **display_group.version**
       * - `int4` in database

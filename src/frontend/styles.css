@@ -7,3 +7,16 @@ body {
     max-width: 1200px;
     padding: 20px;
 }
+
+@keyframes highlight-fade {
+    from {
+        background-color: rgb(181, 246, 177);
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+.highlight {
+    animation: highlight-fade 3s ease-out;
+}
