@@ -180,7 +180,7 @@ interface EditModalProps {
 }
 function EditModal({ dgs, dg, onClose }: EditModalProps) {
     const dispatch = useAppDispatch();
-    const [code, setCode] = useState("");
+    const [code, setCode] = useState(dg.code);
     const [name, setName] = useState(dg.name);
     const [level, setLevel] = useState(dg.level);
     const [parentId, setParentId] = useState<number | null>(dg.parent_id);
@@ -208,7 +208,11 @@ function EditModal({ dgs, dg, onClose }: EditModalProps) {
             <DialogTitle>Edit Display Group</DialogTitle>
             <DialogContent>
                 <Stack direction="column" spacing={1} mt={3}>
-                    <TextField label="ID" value={dg.id} disabled />
+                    <TextField
+                        label="Code"
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                    />
                     <TextField
                         label="Name"
                         value={name}

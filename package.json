@@ -5,12 +5,13 @@
     "type": "module",
     "scripts": {
         "zap": "export $(cat .env | grep -m 1 DATABASE_URL | xargs) && npx zapatos && cp src/zapatos/schema.d.ts src/backend/zapatos.d.ts && cp src/zapatos/schema.d.ts src/common/zapatos.d.ts && cp src/zapatos/schema.d.ts src/frontend/zapatos.d.ts",
-        "build:frontend": "vite build src/frontend",
+        "build:frontend": "vite build && rm -r ./output/frontend && mv ./src/frontend/dist ./output/frontend",
         "build:backend": "tsc --build ./src/backend/tsconfig.json",
         "build": "npm run build:frontend && npm run build:backend",
+        "start": "npm run build && node ./output/backend/server.js",
         "watch:backend:ts": "tsc --build ./src/backend/tsconfig.json --watch --preserveWatchOutput --pretty",
         "watch:backend:js": "ENV=local nodemon --watch ./output/backend --watch ./output/common --delay 500ms ./output/backend/server.js",
-        "watch:frontend": "vite src/frontend",
+        "watch:frontend": "vite",
         "dev": "concurrently --kill-others --verbose --names \"backend:ts,backend:js,frontend\" \"npm run watch:backend:ts\" \"npm run watch:backend:js\" \"npm run watch:frontend\""
     },
     "author": "",
